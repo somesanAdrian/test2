@@ -35,7 +35,7 @@ app.get("/users", (req, res) => {
   ]);
 });
 
-app.post("/user", (req, res) => {
+app.post("/user", async (req, res) => {
   const post = new Post({
     title: req.body.title,
     description: req.body.description
