@@ -20,7 +20,7 @@
     {
       "src": "/posts",
       "dest": "/server.js",
-      "methods": ["GET"]
+      "methods": ["post"]
     }
   ]
 }

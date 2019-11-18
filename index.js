@@ -1,17 +1,12 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const Post = require('./models/Posts');
 
 const port = 5000;
 
 // Body parser
 app.use(express.urlencoded({ extended: false }));
-
-//Import routes
-const postsRoutes = require('./routes/posts');
-
-app.use('/posts', postsRoutes);
 
 // Home route
 app.get("/", (req, res) => {
@@ -30,6 +25,20 @@ app.post("/user", (req, res) => {
   const { name, location } = req.body;
 
   res.send({ status: "User created", name, location });
+});
+
+//submit a post
+app.post('/post', async (req, res) => {
+  const post = new Post({
+      title: req.body.title,
+      description: req.body.description
+  })
+  try {
+      const savePost = await post.save();
+      res.json(savePost);
+  } catch (err) {
+      res.json({message: err});
+  }
 });
 
 // Listen on port 5000
