@@ -51,13 +51,13 @@ app.post("/user", async (req, res) => {
 });
 
 //submit a post
-app.post('/post', async (req, res) => {
+app.post('/post', (req, res) => {
   const post = new Post({
     title: req.body.title,
     description: req.body.description
   })
   try {
-    const savePost = await post.save();
+    const savePost = post.save();
     res.json(savePost);
   } catch (err) {
     res.json({
