@@ -35,13 +35,13 @@ app.get("/users", (req, res) => {
   ]);
 });
 
-app.post("/user", async (req, res) => {
+app.post("/user", (req, res) => {
   const post = new Post({
     title: req.body.title,
     description: req.body.description
   })
   try {
-    const savePost = await post.save();
+    const savePost = post.save();
     res.json(savePost);
   } catch (err) {
     res.json({
