@@ -15,7 +15,7 @@
     {
       "src": "/posts",
       "dest": "/index.js",
-      "methods": ["POST"]
+      "methods": ["GET"]
     }
   ]
 }
