@@ -8,6 +8,11 @@ const port = 5000;
 // Body parser
 app.use(express.urlencoded({ extended: false }));
 
+//Connect to db
+mongoose.connect('mongodb+srv://shop-admin:qEHUuQEAsjlk6j4A@cluster0-tdi3x.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true }, 
+    () => console.log('connected to DB')
+);
+
 // Home route
 app.get("/", (req, res) => {
   res.send("Welcome to a basic express App");
@@ -47,8 +52,4 @@ app.listen(port, () => {
 Visit http://localhost:5000`);
 });
 
-//Connect to db
-mongoose.connect('mongodb+srv://shop-admin:qEHUuQEAsjlk6j4A@cluster0-tdi3x.mongodb.net/test?retryWrites=true&w=majority', { useUnifiedTopology: true }, 
-    () => console.log('connected to DB')
-);
 
